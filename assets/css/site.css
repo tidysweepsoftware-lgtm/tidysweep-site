@@ -83,7 +83,9 @@ section { padding: 90px 0; }
 .dark-bg { background: var(--bg2) url(../img/bg/section.jpg) center / cover no-repeat; }
 
 /* Carousel */
-.carousel { position: relative; max-width: 1040px; margin: 0 auto; }
+.wrap.wide { max-width: 1760px; }
+/* As wide as the screen allows, but never taller than the window, so the whole picture is always in view */
+.carousel { position: relative; max-width: min(100%, calc((100vh - 140px) * 16 / 9)); margin: 0 auto; }
 .slides { position: relative; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 40px 100px rgba(0,0,0,0.55), 0 0 0 1px rgba(124,92,255,0.15); aspect-ratio: 16 / 9; background: #0b0e1c; }
 .slide { position: absolute; inset: 0; opacity: 0; transition: opacity .7s ease, transform .7s ease; transform: scale(1.02); }
 .slide.on { opacity: 1; transform: none; }
