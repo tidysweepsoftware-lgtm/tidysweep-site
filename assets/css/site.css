@@ -87,8 +87,12 @@ section { padding: 90px 0; }
 /* As wide as the screen allows, but never taller than the window, so the whole picture is always in view */
 .carousel { position: relative; max-width: min(100%, calc((100vh - 140px) * 16 / 9)); margin: 0 auto; }
 .slides { position: relative; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 40px 100px rgba(0,0,0,0.55), 0 0 0 1px rgba(124,92,255,0.15); aspect-ratio: 16 / 9; background: #0b0e1c; }
-.slide { position: absolute; inset: 0; opacity: 0; transition: opacity .7s ease, transform .7s ease; transform: scale(1.02); }
-.slide.on { opacity: 1; transform: none; }
+/* Swoosh: fast through the middle of the move, soft at both ends, with a light motion blur while it flies */
+.slide { position: absolute; inset: 0; transform: translateX(100%); transition: transform .85s cubic-bezier(.77, 0, .18, 1); }
+.slide.moving { animation: swoosh .85s cubic-bezier(.77, 0, .18, 1); }
+@keyframes swoosh { 0%, 100% { filter: none; } 45% { filter: blur(6px) brightness(1.08); } }
+@media (prefers-reduced-motion: reduce) { .slide { transition-duration: .01s; } .slide.moving { animation: none; } }
+.slide .cap a { pointer-events: none; } .slide.on .cap a { pointer-events: auto; }
 .slide img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
 .slide .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 26px 18px; background: linear-gradient(to top, rgba(5,7,16,0.92), transparent); display: flex; align-items: end; gap: 12px; }
 .slide .cap b { font-size: 19px; }
