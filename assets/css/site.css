@@ -85,7 +85,8 @@ section { padding: 90px 0; }
 /* Carousel */
 .wrap.wide { max-width: 1760px; }
 /* As wide as the screen allows, but never taller than the window, so the whole picture is always in view */
-.carousel { position: relative; max-width: min(100%, calc((100vh - 140px) * 16 / 9)); margin: 0 auto; }
+.carousel { position: relative; max-width: min(80%, calc((100vh - 140px) * 16 / 9 * 0.8)); margin: 0 auto; }
+@media (max-width: 700px) { .carousel { max-width: 100%; } }
 /* The band is as wide as the screen; each picture flies across all of it, so nothing clips it at the box edges */
 .stage { overflow: hidden; padding-bottom: 70px; }
 .slides { position: relative; aspect-ratio: 16 / 9; }
